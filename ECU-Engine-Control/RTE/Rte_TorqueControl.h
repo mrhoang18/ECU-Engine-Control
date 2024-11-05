@@ -56,6 +56,7 @@ Std_ReturnType Rte_Read_RpLoadSensor_LoadWeight(float* LoadWeight);
  * @return  Std_ReturnType - Trả về E_OK nếu đọc thành công, E_NOT_OK nếu có lỗi
  ******************************************************************************/
 Std_ReturnType Rte_Read_RpTorqueSensor_ActualTorque(float* ActualTorque);
+
 /******************************************************************************
  * @brief   API để ghi dữ liệu mô-men xoắn yêu cầu tới bộ điều khiển động cơ
  *
