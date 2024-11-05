@@ -1,10 +1,34 @@
-#include "Rte_TorqueControl.h"   // Bao gồm interface của RTE cho Torque Control
-#include "Torque_Control.h"
-#include <stdio.h>  // Thư viện cho printf
+/******************************************************************************
+ * @file    Torque_Control.c
+ * @brief   Module này cung cấp triển khai cho hệ thống điều khiển mô-men xoắn,
+ *          bao gồm các hàm khởi tạo và cập nhật.
+ *
+ * @details Module này tương tác với RTE để khởi tạo và điều khiển các cảm biến
+ *          và bộ truyền động liên quan đến điều khiển mô-men xoắn. Nó đọc các 
+ *          giá trị từ bàn đạp ga, tốc độ, tải trọng và mô-men xoắn thực tế để
+ *          tính toán mô-men xoắn yêu cầu và điều chỉnh cho phù hợp.
+ * 
+ * @version 1.0
+ * @author  Tong Xuan Hoang
+ * @date    2024-10-25
+ ******************************************************************************/
 
-// Hàm khởi tạo hệ thống điều khiển mô-men xoắn
+#include "Rte_TorqueControl.h"   // Bao gồm interface của RTE cho Torque Control 
+#include "Torque_Control.h"
+#include <stdio.h>               // Thư viện cho printf 
+
+/******************************************************************************
+ * @brief   Hàm khởi tạo hệ thống điều khiển mô-men xoắn
+ *
+ * @details Khởi tạo các cảm biến và bộ điều khiển cần thiết cho hệ thống điều
+ *          khiển mô-men xoắn, bao gồm cảm biến bàn đạp ga, tốc độ, tải trọng,
+ *          mô-men xoắn và bộ điều khiển động cơ. Báo lỗi nếu quá trình khởi tạo
+ *          bất kỳ thành phần nào không thành công.
+ *
+ * @param   void
+ * @return  void
+ ******************************************************************************/
 void TorqueControl_Init(void) {
-    // Khởi tạo các cảm biến bàn đạp ga, tốc độ và tải trọng
     Std_ReturnType status;
 
     printf("Khởi tạo hệ thống Torque Control...\n");
@@ -45,7 +69,7 @@ void TorqueControl_Init(void) {
         return;
     }
 
-    // Khởi tạo bộ điều khiển mô-men xoắn (có thể là PWM hoặc module điều khiển động cơ)
+    // Khởi tạo bộ điều khiển mô-men xoắn
     status = Rte_Call_PpMotorDriver_Init();
     if (status == E_OK) {
         printf("Bộ điều khiển mô-men xoắn đã khởi tạo thành công.\n");
@@ -57,7 +81,17 @@ void TorqueControl_Init(void) {
     printf("Hệ thống Torque Control đã sẵn sàng.\n");
 }
 
-// Hàm cập nhật hệ thống điều khiển mô-men xoắn
+/******************************************************************************
+ * @brief   Hàm cập nhật hệ thống điều khiển mô-men xoắn
+ *
+ * @details Đọc các giá trị từ cảm biến bao gồm bàn đạp ga, tốc độ xe và tải trọng. 
+ *          Tính toán mô-men xoắn yêu cầu dựa trên các giá trị này và gửi tới bộ 
+ *          điều khiển động cơ. Cuối cùng, đọc mô-men xoắn thực tế từ cảm biến để 
+ *          so sánh và điều chỉnh nếu cần thiết.
+ *
+ * @param   void
+ * @return  void
+ ******************************************************************************/
 void TorqueControl_Update(void) {
     float throttle_input = 0.0f;
     float current_speed = 0.0f;
