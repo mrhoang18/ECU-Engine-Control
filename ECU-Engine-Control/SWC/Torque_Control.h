@@ -7,7 +7,9 @@
  *          Giới hạn mô-men xoắn tối đa và tối thiểu cũng được xác định tại đây.
  *
  * @version 1.0
- * @author  Tong Xuan Hoang
+ * @author  
+ *          HALA Academy
+ *          Tong Xuan Hoang
  * @date    2024-10-25
  ******************************************************************************/
 #ifndef TORQUE_CONTROL_H

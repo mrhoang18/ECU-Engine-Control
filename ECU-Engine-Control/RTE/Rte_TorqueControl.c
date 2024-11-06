@@ -9,7 +9,9 @@
  * 
  * @version 1.0
  * @date    2024-10-25
- * @author  Tong Xuan Hoang
+ * @author  
+ *          HALA Academy
+ *          Tong Xuan Hoang
  ******************************************************************************/
 
 #include "Rte_TorqueControl.h"

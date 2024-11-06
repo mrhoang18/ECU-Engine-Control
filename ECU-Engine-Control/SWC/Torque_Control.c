@@ -9,7 +9,9 @@
  *          tính toán mô-men xoắn yêu cầu và điều chỉnh cho phù hợp.
  * 
  * @version 1.0
- * @author  Tong Xuan Hoang
+ * @author  
+ *          HALA Academy
+ *          Tong Xuan Hoang
  * @date    2024-10-25
  ******************************************************************************/
 

@@ -1,6 +1,13 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "rte_torquecontrol.h": "c"
+        "rte_torquecontrol.h": "c",
+        "iohwab_torquesensor.h": "c",
+        "adc.h": "c",
+        "stdlib.h": "c",
+        "iohwab_throttlesensor.h": "c",
+        "dio.h": "c",
+        "iohwab_motordriver.h": "c",
+        "pwm.h": "c"
     }
 }
